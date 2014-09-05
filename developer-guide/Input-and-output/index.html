@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>Input and output - MultiProxies Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">MultiProxies Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../user-guide/usage/">Usage</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../Module-view/">Module view</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../Http-requests/">Http requests</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../Exception-handling/">Exception handling</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Input and output</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../Log/">Log</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../Threads/">Threads</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../about/">About</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../Exception-handling/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../Log/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#_1">输入与输出</a></li>
+        
+            <li><a href="#_2">输入</a></li>
+        
+            <li><a href="#_4">输出</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="_1">输入与输出</h1>
+<hr />
+<h2 id="_2">输入</h2>
+<p>用户的输入主要和ModuleClass的options有关，在用户使用set命令设置时为输入。
+注意用户使用set命令输入时的所有值都是str类型。在exploit或后续调用时需要注意类型转换。
+比如</p>
+<pre class="prettyprint well"><code>options = {
+'site': 'http://x0day.me',
+'threads': 10,
+}
+….snip…
+def exploit(self):
+threads = int(self.options['thread'])
+</code></pre>
+<h3 id="_3">输入参数的处理</h3>
+<hr />
+<p>对于一些参数的输入，我们希望用户的输入符合规范，或者需要对输入进行判断或处理。这里有一些函数可以做到对一些参数进行判断与预处理。</p>
+<h4 id="rhostssites">rhosts/sites</h4>
+<p>这两个参数意指不定数量的IP，或者url。
+<code>retRhosts(rhosts)</code>/<code>retSites(sites)</code>函数可以对<code>rhosts</code>/<code>sites</code>参数进行判断，
+判断是否为文件(一行一条数据) 文件内容是否规范，是否为单一ip/url。并且<code>retRhosts(rhosts)</code>函数还可以判断是否为ip段。
+如果不希望这样的判断，还可以用<code>isip()</code>,<code>isUrl()</code>函数判断单一输入。</p>
+<h4 id="truefalse">True/False</h4>
+<p>有的情况下，需要对用户输入判断是否为真，单一的字符匹配不够人性化。这里可以使用
+<code>isTrue(check)</code>,<code>isFalse(check)</code>判断。</p>
+<p>其他的输入处理可以参考函数文件。</p>
+<h2 id="_4">输出</h2>
+<p>全局有一个输出函数：</p>
+<pre class="prettyprint well"><code>color.echo(mess, color=None, append=False, verbose=False)
+</code></pre>
+<p>支持的颜色有：BLACK，BLUE，GREEN，CYAN，RED，PURPLE，YELLOW，WHITE，GREY</p>
+<h3 id="_5">不换行输出</h3>
+<pre class="prettyprint well"><code>for x in range(1, 100):
+    color.echo("test ... %d\r" % x , GREEN, append=True)
+    time.sleep(0.1)
+</code></pre>
+<p>注意字符串后有 <code>"\r"</code></p>
+<h3 id="verbose">verbose</h3>
+<p>如果输出不希望被全局冗余输出（verbose）设置影响，可以设置 <code>verbose=True</code>。
+这样当全局禁止冗余输出时依然可以正常显示。</p>
+</div>
+        </div>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

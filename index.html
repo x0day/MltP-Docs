@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+        <title>MultiProxies Documentation</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="./css/prettify-1.0.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">MultiProxies Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="user-guide/usage/">Usage</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="developer-guide/Module-view/">Module view</a>
+                        </li>
+                    
+                        <li >
+                            <a href="developer-guide/Http-requests/">Http requests</a>
+                        </li>
+                    
+                        <li >
+                            <a href="developer-guide/Exception-handling/">Exception handling</a>
+                        </li>
+                    
+                        <li >
+                            <a href="developer-guide/Input-and-output/">Input and output</a>
+                        </li>
+                    
+                        <li >
+                            <a href="developer-guide/Log/">Log</a>
+                        </li>
+                    
+                        <li >
+                            <a href="developer-guide/Threads/">Threads</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="about/">About</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="user-guide/usage/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#multiproxies">MultiProxies 支持多代理的渗透测试框架</a></li>
+        
+            <li><a href="#_1">简介</a></li>
+        
+            <li><a href="#_2">应用场景</a></li>
+        
+            <li><a href="#_3">使用方法</a></li>
+        
+            <li><a href="#_6">全局参数</a></li>
+        
+            <li><a href="#_7">演示</a></li>
+        
+            <li><a href="#_9">开发相关</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="multiproxies">MultiProxies 支持多代理的渗透测试框架</h1>
+<hr />
+<h2 id="_1">简介</h2>
+<p>MultiProxies是由python编写，可在多环境(windows/linux)下运行，支持http,socks4,socks5全局代理的渗透测试框架。</p>
+<p><img alt="" src="img/0.png" /> </p>
+<h2 id="_2">应用场景</h2>
+<p>MultiProxies的应用和代理(http/socks4/socks5)紧密联系，但是所有模块的开发过程中完全不必考虑代理的引用过程(注【1】)。在需要使用代理时只需要用相关命令设置全局代理，不需要使用时再将全局代理设为非即可。</p>
+<p>MultiProxies可以做到:</p>
+<p>1) 用大量的http代理，随机选择进行web扫描攻击(目录扫描，CMS识别等)。</p>
+<p>2) 用单一指定的http/socks4/socks5代理进行内网扫描攻击(端口扫描、smb、smbexec/wmiexec)等。</p>
+<h2 id="_3">使用方法</h2>
+<hr />
+<h3 id="_4">快速运行</h3>
+<pre class="prettyprint well"><code>MltPconsole.py –m 模块名 --options 需要修改的参数(&amp;分隔参数) –-run
+</code></pre>
+<p><img alt="" src="img/1.png" /> </p>
+<h3 id="_5">命令行调用</h3>
+<pre class="prettyprint well"><code>MltPconsole.py –c
+use 模块名/模块号
+set 设置参数
+exploit 运行模块
+</code></pre>
+<p><img alt="" src="img/2.png" /> </p>
+<h2 id="_6">全局参数</h2>
+<p>MultiProxies的客户端(Client)和模块(module)关系清晰，全局变量储存在客户端(Client)中，客户端与模块根据全局参数的设置作出不同的响应。</p>
+<p>并且全局参数分为用户定义和系统预定义，用户自定义参数可以在模块调用时根据模块所需参数跟随。</p>
+<p>系统预定义参数目前有proxies(代理设置)，verbose(冗余输出)，color(颜色设置)</p>
+<p>使用setg/usetg 设置或取消全局参数</p>
+<p><img alt="" src="img/3.png" />  </p>
+<p>全局代理的检查、设置、取消。</p>
+<p><img alt="" src="img/4.png" /> </p>
+<p>Verbose和color参数同理，可自行尝试发现。</p>
+<h2 id="_7">演示</h2>
+<hr />
+<h3 id="web">Web目录扫描</h3>
+<p>支持从文件读取，或者单一站点扫描，这里由于演示，便提前使用ctrl+c停止。</p>
+<p><img alt="" src="img/5.png" /> </p>
+<h3 id="cms">CMS识别</h3>
+<p>Cms识别字典格式为json，根据字典是否有值，按照url状态码，url内容正则匹配，url内容md5值的顺序进行匹配。</p>
+<pre class="prettyprint well"><code> "Wordpress": [
+{
+"path": "/wp-content/themes/twentyten/images/wordpress.png",
+ "md5": "cc452c1368589d88d26f306c49319340"
+},
+ {
+"path": "/wp-admin/images/wp-logo-2x.png",
+ "md5": "18ac0a741a252d0b2d22082d1f02002a"
+}
+],
+</code></pre>
+<p><img alt="" src="img/6.png" />  </p>
+<h3 id="_8">内网攻击</h3>
+<p>我们知道metasploit提供了meterpreter作为中继tunnel，但在有些情况下我们并不需要这么复杂的tunnel。并且meterpreter还要考虑免杀问题，那么在面对简单场景时我们只需要一个能用的tunnel就可以了，就是普通的socks4/socks5代理。</p>
+<p>至于如何开放socks5代理，这个方法有很多：</p>
+<p>linux可以用ssh，s5.py等方式。
+Windows可以用plink.exe，htran.exe</p>
+<p>通用情况可以使用 aspx/php/ jsp/ashx等webshell开放socks5代理。</p>
+<p>这里演示使用webshell(注【2】)开放socks5代理，然后进行内网端口扫描，smb弱口令检测，及使用smb_exec执行系统命令获得返回结果。</p>
+<p><img alt="" src="img/7.png" /> </p>
+<p>使用portscan扫描端口。</p>
+<p><img alt="" src="img/8.png" /> </p>
+<p>使用hash登录</p>
+<p><img alt="" src="img/9.png" /> </p>
+<p>这里portscan可以看出使用与不使用代理结果的区别，之后继续通过socks5代理并且使用hash成功登录，最后使用smb_exec执行了命令并获得了回显。
+并且所有的请求都是通过代理完成的。</p>
+<h2 id="_9">开发相关</h2>
+<p>开发过程使用github协同开发，插件开发请fork <a href="https://github.com/x0day/MltP-modules">MltP-modules</a>，然后pull requests。如果有任何问题欢迎提在github的<a href="https://github.com/x0day/MultiProxies/issues">issues</a>上。或者邮件联系 contact@x0day.me。</p>
+<p>注【1】:尝试多次发现如果每次请求都更换代理，即使在fuzz前检查挑出一部分可用的代理也会大大的降低成功率。所以暂不支持全局的HTTP随机代理开关。如有需求可以通过修改模块部分代码引入实现。</p>
+<p>注【2】 <a href="https://github.com/sensepost/reGeorg">reGeorg</a> </p>
+</div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Copyright &copy; 2014, <a href="http://x0day.me">DM_</a>.</p>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/prettify-1.0.min.js"></script>
+        <script src="./js/base.js"></script>
+    </body>
+</html>

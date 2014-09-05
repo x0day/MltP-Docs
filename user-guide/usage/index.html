@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>Usage - MultiProxies Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">MultiProxies Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li class="active">
+                            <a href="./">Usage</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../developer-guide/Module-view/">Module view</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../developer-guide/Http-requests/">Http requests</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../developer-guide/Exception-handling/">Exception handling</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../developer-guide/Input-and-output/">Input and output</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../developer-guide/Log/">Log</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../developer-guide/Threads/">Threads</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../about/">About</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../..">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../developer-guide/Module-view/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#_1">第一次使用</a></li>
+        
+    
+        <li class="main "><a href="#_2">直接调用</a></li>
+        
+    
+        <li class="main "><a href="#console">Console调用</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h2 id="_1">第一次使用</h2>
+<hr />
+<p>第一次使用时需要安装requests模块，</p>
+<p>linux:</p>
+<pre class="prettyprint well"><code>pip install requests
+</code></pre>
+<p>windows:</p>
+<pre class="prettyprint well"><code>pip install requests
+</code></pre>
+<p>或：</p>
+<pre class="prettyprint well"><code>easy_install requests
+</code></pre>
+<p>并且建议安装impacket模块。    </p>
+<h2 id="_2">直接调用</h2>
+<hr />
+<p><img alt="" src="img/usage-1.png" /></p>
+<p>在这种方式下命令如下：</p>
+<pre class="prettyprint well"><code>usage: MltPconsole.py [-h] [-c | -w] [-l | -s SEARCH | -m MODULE] [-o OPTIONS]
+  [-r] [-g GLOBALS]
+
+optional arguments:
+  -h, --help show this help message and exit
+  -c, --console start from console.
+  -w, --web start from web.
+  -l, --listshow modules list.
+  -s SEARCH, --search SEARCHsearch module with keyword.
+  -m MODULE, --module MODULEthe module to use.
+  -o OPTIONS, --options OPTIONSset the modules options.
+  -r, --run start the module.
+  -g GLOBALS, --globals GLOBALSset the MltProxies globals
+</code></pre>
+<ul>
+<li>
+<p><strong>-l/--list</strong></p>
+<p>列出所有的模块，不需要参数</p>
+<p><img alt="" src="img/usage-2.png" /></p>
+</li>
+<li>
+<p><strong>-s/--search</strong></p>
+<p>搜索符合关键词的模块,需要关键词作为参数</p>
+<p><img alt="" src="img/usage-3.png" /></p>
+</li>
+<li>
+<p><strong>-m/--module</strong> </p>
+<p>调用指定的模块，参数为模块ID或者模块名称(大小写不敏感)，如果不加其他参数(<code>-o/--options,-r/--run</code>)并会显示指定模块的所需参数（options）和信息（info）。</p>
+<p><img alt="" src="img/usage-4.png" /></p>
+</li>
+<li>
+<p><strong>-o/--options</strong></p>
+<p>设置模块参数，多个参数可以用&amp;分隔，如果使用默认参数不必加此参数。</p>
+<p><img alt="" src="img/usage-5.png" /></p>
+</li>
+<li>
+<p><strong>-g/--globals</strong></p>
+<p>设置默认全局参数(verbose,color,proxies)</p>
+</li>
+<li>
+<p><strong>-r/--run</strong></p>
+<p>运行模块</p>
+</li>
+</ul>
+<h2 id="console">Console调用</h2>
+<hr />
+<p>使用<code>MultiProxies –c</code>命令进入，在未选择模块前有以下命令。</p>
+<pre class="prettyprint well"><code>help 显示帮助信息
+exit 退出主程序
+use 加载模块
+show 显示模块列表，可根据可选参数(all/exploit/auxiliary)显示不同的列表
+search 搜索模块名称
+updatedb 更新数据库
+setg 设置全局参数
+usetg 取消全局参数
+</code></pre>
+<p>在选择模块之后又会多出以下命令：</p>
+<pre class="prettyprint well"><code>reload 重新加载模块(方便开发调试)
+set 设置模块参数
+options 显示模块参数
+info 显示模块相关信息
+exploit 运行模块
+back 返回
+</code></pre>
+<p><img alt="" src="img/usage-6.png" /></p>
+<p>上述命令功能和直接调用时相似，另外在console模式下可以执行系统命令，
+use 加载模块出错时会显示模块路径及出错信息，修改模块代码之后reload就可以了。</p>
+<p><img alt="" src="img/usage-7.png" /></p>
+<p>在运行模块时，如果模块调用了框架的多线程函数，则可以使用<code>ctrl+c</code>停止。</p>
+<p>模块主程序在运行时如果模块未捕获键盘信号，那么框架也可以捕获<code>ctrl+c</code>键盘信号。</p>
+</div>
+        </div>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>
